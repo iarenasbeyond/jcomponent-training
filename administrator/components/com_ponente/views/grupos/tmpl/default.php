@@ -265,7 +265,7 @@ if (!empty($this->extra_sidebar))
 					</a>
 				</td>
 				<td>
-					<?php echo $item->listAlbums->fecha; ?>
+					<?php echo $item->fecha; ?>
 				</td>
 
 					</tr>
