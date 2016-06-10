@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_PONENTE_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="estilo" type="list" onchange="this.form.submit();">
+  <option value="Stoner">COM_PONENTE_GRUPOS_ESTILO_OPTION_STONER</option>
+  <option value="Jazz">COM_PONENTE_GRUPOS_ESTILO_OPTION_JAZZ</option>
+  <option value="Folk">COM_PONENTE_GRUPOS_ESTILO_OPTION_FOLK</option>
+  <option value="Classical">COM_PONENTE_GRUPOS_ESTILO_OPTION_CLASSICAL</option>
+</field>
+
+
+    </fields>
+</form>

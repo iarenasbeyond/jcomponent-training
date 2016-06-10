@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" label="COM_PONENTE_FORM_LBL_GRUPO_CREATED_BY" description="COM_PONENTE_FORM_DESC_GRUPO_CREATED_BY" hidden="true" hint="COM_PONENTE_FORM_LBL_GRUPO_CREATED_BY"/>
+    <field name="modified_by" label="COM_PONENTE_FORM_LBL_GRUPO_MODIFIED_BY" description="COM_PONENTE_FORM_DESC_GRUPO_MODIFIED_BY" hidden="true" hint="COM_PONENTE_FORM_LBL_GRUPO_MODIFIED_BY"/>
+    <field name="nombre" type="text" class="nombre_grupo" filter="safehtml" required="true" label="COM_PONENTE_FORM_LBL_GRUPO_NOMBRE" description="COM_PONENTE_FORM_DESC_GRUPO_NOMBRE" hint="COM_PONENTE_FORM_LBL_GRUPO_NOMBRE"/>
+    <field name="estilo" type="list" label="COM_PONENTE_FORM_LBL_GRUPO_ESTILO" description="COM_PONENTE_FORM_DESC_GRUPO_ESTILO" hint="COM_PONENTE_FORM_LBL_GRUPO_ESTILO">
+      <option value="Stoner">COM_PONENTE_GRUPOS_ESTILO_OPTION_STONER</option>
+      <option value="Jazz">COM_PONENTE_GRUPOS_ESTILO_OPTION_JAZZ</option>
+      <option value="Folk">COM_PONENTE_GRUPOS_ESTILO_OPTION_FOLK</option>
+      <option value="Classical">COM_PONENTE_GRUPOS_ESTILO_OPTION_CLASSICAL</option>
+    </field>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+    <field name="filter_estilo" type="list" onchange="this.form.submit();">
+      <option value="Stoner">COM_PONENTE_GRUPOS_ESTILO_OPTION_STONER</option>
+      <option value="Jazz">COM_PONENTE_GRUPOS_ESTILO_OPTION_JAZZ</option>
+      <option value="Folk">COM_PONENTE_GRUPOS_ESTILO_OPTION_FOLK</option>
+      <option value="Classical">COM_PONENTE_GRUPOS_ESTILO_OPTION_CLASSICAL</option>
+    </field>
+  </fieldset>
+  <fieldset name="accesscontrol">
+    <field name="asset_id" type="hidden" filter="unset"/>
+    <field name="rules" type="rules" label="JFIELD_RULES_LABEL" translate_label="false" filter="rules" validate="rules" class="inputbox" component="com_ponente" section="grupo"/>
+  </fieldset>
+</form>

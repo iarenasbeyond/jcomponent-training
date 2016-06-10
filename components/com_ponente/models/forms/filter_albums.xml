@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_PONENTE_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="grupo" type="sql" query="SELECT 0 AS `nombre`, 'COM_PONENTE_ALBUMS_GRUPO_FILTER' AS `val` UNION SELECT `nombre`, `nombre` AS val FROM `#__ponente_grupo`" key_field="nombre" value_field="val" class="inputbox" onchange="this.form.submit()" translate="true"/>
+
+
+    </fields>
+</form>
