@@ -108,6 +108,25 @@ class PonenteModelAlbums extends JModelList
 
 	}
 
+	public function getLastAlbum($pk)
+	{
+		$db    = JFactory::getDbo();
+		$query = $db->getQuery(true);
+
+		$query
+			->select(
+				$db->quoteName(array('id', 'fecha', 'nombre', 'descripcion', 'imagen'))
+			)
+			->from($db->quoteName('#__ponente_album', 'a'))
+			->where($db->quoteName('grupo') . ' = ' . (int) $pk)
+			->order ('a.fecha DESC')
+			->setlimit ('1');
+
+		$db->setQuery($query);
+
+		return $db->loadObjectList();
+	}
+
 	/**
 	 * Method to get a store id based on model configuration state.
 	 *
