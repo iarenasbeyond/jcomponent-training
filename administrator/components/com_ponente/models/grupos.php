@@ -101,6 +101,25 @@ class PonenteModelGrupos extends JModelList
 		return parent::getStoreId($id);
 	}
 
+	public function getLastAlbum($pk)
+	{
+		$db    = JFactory::getDbo();
+		$query = $db->getQuery(true);
+
+		$query
+			->select(
+				$db->quoteName('fecha')
+			)
+			->from($db->quoteName('#__ponente_album', 'a'))
+			->where($db->quoteName('grupo') . ' = ' . (int) $pk)
+			->order ('a.fecha DESC')
+			->setlimit ('1');
+
+		$db->setQuery($query);
+
+		return $db->loadResult();
+	}
+
 	/**
 	 * Build an SQL query to load the list data.
 	 *
@@ -190,7 +209,9 @@ class PonenteModelGrupos extends JModelList
 	{
 		$items = parent::getItems();
 
+
 		foreach ($items as $oneItem) {
+					$oneItem->fecha=$this->getLastAlbum($oneItem->id);
 					$oneItem->estilo = JText::_('COM_PONENTE_GRUPOS_ESTILO_OPTION_' . strtoupper($oneItem->estilo));
 		}
 		return $items;
