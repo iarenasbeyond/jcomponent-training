@@ -110,17 +110,20 @@ class PonenteControllerAlbums extends JControllerAdmin
 		$app = JFactory::getApplication();
 		$input = $app->input;
 
-		$id = $input->get('id');
+		$id = $input->get('id', 0);
 
-		$modelAlbums = JModelList::getInstance('albums', 'PonenteModel');
+		$grupos = JModelList::getInstance('grupos', 'PonenteModel');
+		$listGrupos = $grupos->getItems();
 
-		$album = $modelAlbums->getLastAlbum($id);
+		foreach($listGrupos as $list){
+			$modelAlbums = JModelList::getInstance('albums', 'PonenteModel');
 
+			$album = $modelAlbums->getLastAlbum($list->id);
+
+			var_dump($album);
+		}		
 
 		$view = $this->getView('Albums', 'html');
-
-		var_dump($view);
-		exit;
 
 		$view->item = $album;
 

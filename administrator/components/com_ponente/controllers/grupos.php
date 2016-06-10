@@ -104,4 +104,27 @@ class PonenteControllerGrupos extends JControllerAdmin
 		// Close the application
 		JFactory::getApplication()->close();
 	}
+
+	public function lastAlbum()
+	{
+		$app = JFactory::getApplication();
+		$input = $app->input;
+
+		$id = $input->get('id', 0);
+
+		$grupos = JModelList::getInstance('grupos', 'PonenteModel');
+		$listGrupos = $grupos->getItems();
+
+		foreach($listGrupos as $list){
+			$modelAlbums = JModelList::getInstance('albums', 'PonenteModel');
+
+			$album = $modelAlbums->getLastAlbum($list->id);
+		}		
+
+		$view = $this->getView('Albums', 'html');
+
+		$view->item = $album;
+
+		$view->display('lastAlbum');
+	}
 }
