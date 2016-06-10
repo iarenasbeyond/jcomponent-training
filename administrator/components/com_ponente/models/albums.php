@@ -86,6 +86,28 @@ class PonenteModelAlbums extends JModelList
 		parent::populateState('a.grupo', 'asc');
 	}
 
+
+	public function getAlbumsByGroup($pk)
+	{
+
+
+
+		$db    = JFactory::getDbo();
+		$query = $db->getQuery(true);
+
+		$query
+			->select(
+				$db->quoteName(array('id', 'fecha', 'nombre', 'descripcion', 'imagen'))
+			)
+			->from($db->quoteName('#__ponente_album', 'a'))
+			->where($db->quoteName('grupo') . ' = ' . (int) $pk);
+
+		$db->setQuery($query);
+
+		return $db->loadObjectList();
+
+	}
+
 	/**
 	 * Method to get a store id based on model configuration state.
 	 *
@@ -142,7 +164,7 @@ class PonenteModelAlbums extends JModelList
 		$query->join('LEFT', '#__users AS `modified_by` ON `modified_by`.id = a.`modified_by`');
 		// Join over the foreign key 'grupo'
 		$query->select('`#__ponente_grupo_2388112`.`nombre` AS grupos_fk_value_2388112');
-		$query->join('LEFT', '#__ponente_grupo AS #__ponente_grupo_2388112 ON #__ponente_grupo_2388112.`nombre` = a.`grupo`');
+		$query->join('LEFT', '#__ponente_grupo AS #__ponente_grupo_2388112 ON #__ponente_grupo_2388112.`id` = a.`grupo`');
 
 		// Filter by published state
 		$published = $this->getState('filter.state');
@@ -223,7 +245,7 @@ class PonenteModelAlbums extends JModelList
 					$query
 							->select('`nombre`')
 							->from('`#__ponente_grupo`')
-							->where($db->quoteName('nombre') . ' = '. $db->quote($db->escape($value)));
+							->where($db->quoteName('id') . ' = '. $db->quote($db->escape($value)));
 					$db->setQuery($query);
 					$results = $db->loadObject();
 					if ($results) {

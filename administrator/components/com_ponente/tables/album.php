@@ -181,11 +181,6 @@ class PonenteTablealbum extends JTable
 			$this->ordering = self::getNextOrder();
 		}
 		
-		// Check if grupo is unique
-		if (!$this->isUnique('grupo'))
-		{
-			throw new Exception('Your <b>grupo</b> item "<b>' . $this->grupo . '</b>" already exists');
-		}
 		
 
 		return parent::check();

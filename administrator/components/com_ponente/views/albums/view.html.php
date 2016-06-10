@@ -36,21 +36,25 @@ class PonenteViewAlbums extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-		$this->state = $this->get('State');
-		$this->items = $this->get('Items');
-		$this->pagination = $this->get('Pagination');
 
-		// Check for errors.
-		if (count($errors = $this->get('Errors')))
+		if ($tpl != 'bygroup')
 		{
-			throw new Exception(implode("\n", $errors));
+			$this->state = $this->get('State');
+			$this->items = $this->get('Items');
+			$this->pagination = $this->get('Pagination');
+
+			// Check for errors.
+			if (count($errors = $this->get('Errors')))
+			{
+				throw new Exception(implode("\n", $errors));
+			}
+
+			$this->addToolbar();
+
+			PonenteHelpersPonente::addSubmenu('albums');
+			$this->sidebar = JHtmlSidebar::render();
 		}
 
-		PonenteHelpersPonente::addSubmenu('albums');
-
-		$this->addToolbar();
-
-		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
 	}
 

@@ -13,13 +13,13 @@
     <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
     <field name="created_by" label="COM_PONENTE_FORM_LBL_ALBUM_CREATED_BY" description="COM_PONENTE_FORM_DESC_ALBUM_CREATED_BY" hidden="true" hint="COM_PONENTE_FORM_LBL_ALBUM_CREATED_BY"/>
     <field name="modified_by" label="COM_PONENTE_FORM_LBL_ALBUM_MODIFIED_BY" description="COM_PONENTE_FORM_DESC_ALBUM_MODIFIED_BY" hidden="true" hint="COM_PONENTE_FORM_LBL_ALBUM_MODIFIED_BY"/>
-    <field name="grupo" type="foreignkey" label="COM_PONENTE_FORM_LBL_ALBUM_GRUPO" description="COM_PONENTE_FORM_DESC_ALBUM_GRUPO" class="inputbox" input_type="list" table="#__ponente_grupo" key_field="nombre" value_field="nombre" default="''"/>
+    <field name="grupo" type="foreignkey" label="COM_PONENTE_FORM_LBL_ALBUM_GRUPO" description="COM_PONENTE_FORM_DESC_ALBUM_GRUPO" class="inputbox" input_type="list" table="#__ponente_grupo" key_field="id" value_field="nombre" default="''"/>
     <field name="nombre" type="text" filter="safehtml" label="COM_PONENTE_FORM_LBL_ALBUM_NOMBRE" description="COM_PONENTE_FORM_DESC_ALBUM_NOMBRE" hint="COM_PONENTE_FORM_LBL_ALBUM_NOMBRE"/>
     <field name="fecha" type="calendar" class="inputbox" label="COM_PONENTE_FORM_LBL_ALBUM_FECHA" description="COM_PONENTE_FORM_DESC_ALBUM_FECHA" hint="COM_PONENTE_FORM_LBL_ALBUM_FECHA"/>
     <field name="descripcion" type="text" class="a.bum_description" filter="safehtml" label="COM_PONENTE_FORM_LBL_ALBUM_DESCRIPCION" description="COM_PONENTE_FORM_DESC_ALBUM_DESCRIPCION" hint="COM_PONENTE_FORM_LBL_ALBUM_DESCRIPCION"/>
     <field name="imagen" type="media" filter="safehtml" label="COM_PONENTE_FORM_LBL_ALBUM_IMAGEN" description="COM_PONENTE_FORM_DESC_ALBUM_IMAGEN" hint="COM_PONENTE_FORM_LBL_ALBUM_IMAGEN"/>
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
-    <field name="filter_grupo" type="sql" query="SELECT 0 AS `nombre`, 'COM_PONENTE_ALBUMS_GRUPO_FILTER' AS `val` UNION SELECT `nombre`, `nombre` AS val FROM `#__ponente_grupo`" key_field="nombre" value_field="val" class="inputbox" onchange="this.form.submit()" translate="true"/>
+    <field name="filter_grupo" type="sql" query="SELECT 0 AS `id`, 'COM_PONENTE_ALBUMS_GRUPO_FILTER' AS `val` UNION SELECT `id`, `nombre` AS val FROM `#__ponente_grupo`" key_field="id" value_field="val" class="inputbox" onchange="this.form.submit()" translate="true"/>
   </fieldset>
   <fieldset name="accesscontrol">
     <field name="asset_id" type="hidden" filter="unset"/>

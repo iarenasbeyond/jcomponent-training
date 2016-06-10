@@ -196,7 +196,7 @@ $wheres2[] = 'a.fecha LIKE ' . $word;
                     )
             )
             ->from('#__ponente_album AS a')
-            ->innerJoin('`#__ponente_grupo` AS ponente_grupo ON ponente_grupo.nombre = a.grupo')
+            ->innerJoin('`#__ponente_grupo` AS ponente_grupo ON ponente_grupo.id = a.grupo')
             ->where('(' . $where . ')')
             ->group('a.id')
             ->order($order);

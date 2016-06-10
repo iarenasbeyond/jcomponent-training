@@ -222,7 +222,7 @@ if (empty($list['direction']))
 		$query->join('LEFT', '#__users AS modified_by ON modified_by.id = a.modified_by');
 		// Join over the foreign key 'grupo'
 		$query->select('`#__ponente_grupo_2388112`.`nombre` AS grupos_fk_value_2388112');
-		$query->join('LEFT', '#__ponente_grupo AS #__ponente_grupo_2388112 ON #__ponente_grupo_2388112.`nombre` = a.`grupo`');
+		$query->join('LEFT', '#__ponente_grupo AS #__ponente_grupo_2388112 ON #__ponente_grupo_2388112.`id` = a.`grupo`');
 		
 		if (!JFactory::getUser()->authorise('core.edit', 'com_ponente'))
 		{
@@ -311,7 +311,7 @@ if (empty($list['direction']))
 					$query
 							->select('`nombre`')
 						->from($db->quoteName('#__ponente_grupo'))
-						->where($db->quoteName('nombre') . ' = ' . $db->quote($db->escape($value)));
+						->where($db->quoteName('id') . ' = ' . $db->quote($db->escape($value)));
 					$db->setQuery($query);
 					$results = $db->loadObject();
 

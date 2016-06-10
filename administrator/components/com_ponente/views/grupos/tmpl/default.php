@@ -186,6 +186,7 @@ if (!empty($this->extra_sidebar))
 				<th class='left'>
 				<?php echo JHtml::_('grid.sort',  'COM_PONENTE_GRUPOS_ESTILO', 'a.`estilo`', $listDirn, $listOrder); ?>
 				</th>
+					<th>&nbsp;</th>
 
 					
 				</tr>
@@ -256,6 +257,11 @@ if (!empty($this->extra_sidebar))
 				</td>				<td>
 
 					<?php echo $item->estilo; ?>
+				</td>
+				<td>
+					<a class="btn btn-info" href="<?php echo JRoute::_('index.php?option=com_ponente&task=grupo.listAlbums&id=' . (int) $item->id); ?>">
+						Ver Albums
+					</a>
 				</td>
 
 					</tr>

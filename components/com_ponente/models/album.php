@@ -121,7 +121,7 @@ class PonenteModelAlbum extends JModelItem
 					$query
 						->select('`nombre`')
 						->from($db->quoteName('#__ponente_grupo'))
-						->where($db->quoteName('nombre') . ' = ' . $db->quote($db->escape($value)));
+						->where($db->quoteName('id') . ' = ' . $db->quote($db->escape($value)));
 					$db->setQuery($query);
 					$results = $db->loadObject();
 					if ($results) {

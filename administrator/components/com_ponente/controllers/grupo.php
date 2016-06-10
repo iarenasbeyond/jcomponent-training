@@ -29,4 +29,26 @@ class PonenteControllerGrupo extends JControllerForm
 		$this->view_list = 'grupos';
 		parent::__construct();
 	}
+
+	public function listAlbums()
+	{
+		$app = JFactory::getApplication();
+		$input = $app->input;
+
+		$id = $input->get('id');
+
+		$model = $this->getModel('grupo');
+		$grupo = $model->getItem($id);
+
+		$modelAlbums = JModelList::getInstance('albums', 'PonenteModel');
+
+		$grupo->albumList = $modelAlbums->getAlbumsByGroup($id);
+
+
+		$view = $this->getView('albums', 'html');
+
+		$view->item = $grupo;
+
+		$view->display('bygroup');
+	}
 }
