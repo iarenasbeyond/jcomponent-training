@@ -104,4 +104,27 @@ class PonenteControllerAlbums extends JControllerAdmin
 		// Close the application
 		JFactory::getApplication()->close();
 	}
+
+	public function lastAlbum()
+	{
+		$app = JFactory::getApplication();
+		$input = $app->input;
+
+		$id = $input->get('id');
+
+		$modelAlbums = JModelList::getInstance('albums', 'PonenteModel');
+
+		$album = $modelAlbums->getLastAlbum($id);
+
+
+		$view = $this->getView('Albums', 'html');
+
+		var_dump($view);
+		exit;
+
+		$view->item = $album;
+
+		$view->display('lastAlbum');
+	}
+
 }
