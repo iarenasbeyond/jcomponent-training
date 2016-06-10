@@ -187,6 +187,7 @@ if (!empty($this->extra_sidebar))
 				<?php echo JHtml::_('grid.sort',  'COM_PONENTE_GRUPOS_ESTILO', 'a.`estilo`', $listDirn, $listOrder); ?>
 				</th>
 					<th>&nbsp;</th>
+					<th>Último álbum lanzado</th>
 
 					
 				</tr>
@@ -262,6 +263,9 @@ if (!empty($this->extra_sidebar))
 					<a class="btn btn-info" href="<?php echo JRoute::_('index.php?option=com_ponente&task=grupo.listAlbums&id=' . (int) $item->id); ?>">
 						Ver Albums
 					</a>
+				</td>
+				<td>
+					<?php echo $item->listAlbums->fecha; ?>
 				</td>
 
 					</tr>
