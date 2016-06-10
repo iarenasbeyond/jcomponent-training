@@ -82,7 +82,7 @@ if (!empty($this->extra_sidebar))
 {
 	$this->sidebar .= $this->extra_sidebar;
 }
-
+var_dump($this->item);
 ?>
 
 
@@ -157,22 +157,19 @@ if (!empty($this->extra_sidebar))
 				<th class='left'>
 				<?php echo JHtml::_('grid.sort',  'COM_PONENTE_ALBUMS_IMAGEN', 'a.`imagen`', $listDirn, $listOrder); ?>
 				</th>
-
-					
-				</tr>
-				</th>
-				<?php echo JText::_('COM_PONENTE_ULTIMO_ALBUM'); ?>				
+				<th class='left'>
+				<?php echo JText::_('COM_PONENTE_ULTIMO_ALBUM'); ?>	
+				</th>		
 				</tr>
 				</thead>
 				<tfoot>
 				</tfoot>
 				<tbody>
-				<?php foreach ($grupo->albumList as $album) :?>
+				<?php foreach ($this->item as $album) :?>
 					<tr class="row<?php echo $i % 2; ?>">
 						<td>
 
 					<?php echo $album->id; ?>
-				</td>
 				</td>
 						<td>
 							<a href="<?php echo JRoute::_('index.php?option=com_ponente&task=album.edit&id='.(int) $album->id); ?>"><?php echo $album->nombre; ?></a>
@@ -188,10 +185,8 @@ if (!empty($this->extra_sidebar))
 					<?php echo $album->imagen; ?>
 				</td>
 				<td>
-
-					<?php echo $album->imagen; ?>
+					<?php echo $album->fecha; ?>
 				</td>
-
 					</tr>
 				<?php endforeach; ?>
 				</tbody>
